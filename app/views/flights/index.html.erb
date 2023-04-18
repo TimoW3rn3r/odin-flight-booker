@@ -1,1 +1,28 @@
-Helloo from flights index
+<h2>Search Flight</h2>
+
+<%= form_with method: :get do |f| %>
+  <div>
+    <%= label "Departure Airport", :departure_code %><br>
+    <%= f.collection_select :departure_code, @airports, :airport_code, :airport_name %>
+  </div>
+
+  <div>
+    <%= label "Arrival Airport", :arrival_code %><br>
+    <%= f.collection_select :arrival_code, @airports, :airport_code, :airport_name %>
+  </div>
+
+  <div>
+    <%= label "Flight Date", :date %><br>
+    <%= f.collection_select :date, @flights, :date, :date %>
+  </div>
+
+  <div>
+    <%= label "No. of Passengers", :num_tickets %><br>
+    <%= f.select :num_tickets, @passengers_options %>
+  </div>
+
+  <div>
+    <%= f.submit "Search" %>
+  </div>
+
+<% end %>
