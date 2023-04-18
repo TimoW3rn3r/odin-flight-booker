@@ -3,17 +3,17 @@
 <%= form_with method: :get do |f| %>
   <div>
     <%= label "Departure Airport", :departure_airport_id %><br>
-    <%= f.collection_select :departure_airport_id, @airports, :id, :airport_name %>
+    <%= f.collection_select :departure_airport_id, @airports, :id, :airport_name, selected: params[:departure_airport_id] %>
   </div>
 
   <div>
     <%= label "Arrival Airport", :arrival_airport_id %><br>
-    <%= f.collection_select :arrival_airport_id, @airports, :id, :airport_name %>
+    <%= f.collection_select :arrival_airport_id, @airports, :id, :airport_name, selected: params[:arrival_airport_id] %>
   </div>
 
   <div>
     <%= label "Flight Date", :date %><br>
-    <%= f.collection_select :date, @flights, :date, :date %>
+    <%= f.collection_select :date, @flights, :date, :date, selected: params[:date] %>
   </div>
 
   <div>
