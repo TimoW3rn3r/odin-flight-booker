@@ -40,7 +40,7 @@
 <div>
   <h2 class="font-semibold text-xl my-4">Search Results</h2>
 
-  <%= form_with method: :get do |f| %>
+  <%= form_with url: new_booking_path, method: :get do |f| %>
 
     <ul>
       <% @flight_results.each do |flight| %>
