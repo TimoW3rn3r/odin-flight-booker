@@ -45,7 +45,6 @@ has_many :flights, through: :bookings
 | ---------------- | --------- | ----------- |
 | passenger_id     | reference | -           |
 | flight_id        | reference | -           |
-| no_of_passengers | int       | 1-4         |
 
 ```ruby
 belongs_to :passenger
