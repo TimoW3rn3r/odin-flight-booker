@@ -1,42 +1,65 @@
-<h2>Search Flight</h2>
+<div>
+  <h2 class="font-semibold text-xl my-4">Search Flight</h2>
 
-<%= form_with method: :get do |f| %>
-  <div>
-    <%= label "Departure Airport", :departure_airport_id %><br>
-    <%= f.collection_select :departure_airport_id, @airports, :id, :airport_name, selected: params[:departure_airport_id] %>
-  </div>
+  <%= form_with method: :get, class: "flex-col space-y-4" do |f| %>
+    <div>
+      <%= f.label :departure_airport_id, "Departure Airport" %><br>
+      <%= f.collection_select :departure_airport_id,
+                          @airports,
+                          :id,
+                          :airport_name,
+                          selected: params[:departure_airport_id] %>
+    </div>
 
-  <div>
-    <%= label "Arrival Airport", :arrival_airport_id %><br>
-    <%= f.collection_select :arrival_airport_id, @airports, :id, :airport_name, selected: params[:arrival_airport_id] %>
-  </div>
+    <div>
+      <%= f.label :arrival_airport_id, "Arrival Airport" %><br>
+      <%= f.collection_select :arrival_airport_id,
+                          @airports,
+                          :id,
+                          :airport_name,
+                          selected: params[:arrival_airport_id] %>
+    </div>
 
-  <div>
-    <%= label "Flight Date", :date %><br>
-    <%= f.collection_select :date, @flights, :date, :date, selected: params[:date] %>
-  </div>
+    <div>
+      <%= f.label :date, "Flight Date" %><br>
+      <%= f.collection_select :date, @flights, :date, :date, selected: params[:date] %>
+    </div>
 
-  <div>
-    <%= label "No. of Passengers", :num_tickets %><br>
-    <%= f.select :num_tickets, @passengers_options %>
-  </div>
+    <div>
+      <%= f.label :num_tickets, "No. of Passengers" %><br>
+      <%= f.select :num_tickets, @passengers_options, selected: params[:num_tickets] %>
+    </div>
 
-  <div>
-    <%= f.submit "Search" %>
-  </div>
+    <div>
+      <%= f.submit "Search", class: "btn-primary" %>
+    </div>
 
-<% end %>
-
-
-<h2>Search Results</h2>
-
-<ul>
-  <% @flight_results.each do |flight| %>
-    <li>
-      <div><%= flight.departure_airport.airport_name %></div>
-      <div><%= flight.arrival_airport.airport_name %></div>
-      <div><%= flight.date %></div>
-      <div><%= flight.time %></div>
-    </li>
   <% end %>
-</ul>
+</div>
+
+<div>
+  <h2 class="font-semibold text-xl my-4">Search Results</h2>
+
+  <%= form_with method: :get do |f| %>
+
+    <ul>
+      <% @flight_results.each do |flight| %>
+        <%= f.hidden_field :num_tickets, value: params[:num_tickets] %>
+
+        <label for=<%= "flight_id_" + flight.id.to_s %> class="flex">
+          <%= f.radio_button :flight_id, flight.id, class: "self-start mt-1.5 mx-4" %>
+          <div>
+            <div><%= flight.departure_airport.airport_name %></div>
+            <div><%= flight.arrival_airport.airport_name %></div>
+            <div><%= flight.date %></div>
+            <div><%= flight.time %></div>
+          </div>
+        </label>
+
+        <br>
+      <% end %>
+    </ul>
+
+    <%= f.submit "Book Flight", class: "btn-primary" %>
+  <% end %>
+</div>
