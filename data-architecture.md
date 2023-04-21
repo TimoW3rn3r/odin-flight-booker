@@ -14,8 +14,8 @@ has_many :arriving_flights, foreign_key: :arrival_airport_id, class_name: "Fligh
 
 | field                | type      | validations |
 | -------------------- | --------- | ----------- |
-| departure_airport_id | reference | reference   |
-| arrival_airport_id   | reference | reference   |
+| departure_airport_id | reference | -           |
+| arrival_airport_id   | reference | -           |
 | date                 | date      | -           |
 | time                 | time      | -           |
 | duration             | int       | -           |
@@ -29,25 +29,27 @@ has_many :passengers, through: :bookings
 
 ### Passenger
 
-| field | type   | validations          |
-| ----- | ------ | -------------------- |
-| name  | string | presence, 2-50 chars |
-| email | string | presence, email      |
+| field      | type      | validations          |
+| ---------- | --------- | -------------------- |
+| name       | string    | presence, 2-50 chars |
+| email      | string    | presence, email      |
+| booking_id | reference | -                    |
 
 ```ruby
 has_many :bookings
 has_many :flights, through: :bookings
+
+belongs_to :booking
 ```
 
 ### Booking
 
 | field            | type      | validations |
 | ---------------- | --------- | ----------- |
-| passenger_id     | reference | -           |
 | flight_id        | reference | -           |
 
 ```ruby
-belongs_to :passenger
+has_many :passengers
 belongs_to :flight
 ```
 
