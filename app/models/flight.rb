@@ -11,4 +11,8 @@ class Flight < ApplicationRecord
   belongs_to :arrival_airport, class_name: "Airport"
   has_many :bookings
   has_many :passenger, through: :bookings
+  
+  def formatted_time
+    time.strftime("%l:%M %p")
+  end
 end
