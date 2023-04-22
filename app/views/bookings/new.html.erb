@@ -1,1 +1,40 @@
-New Booking
+<h2 class="font-semibold text-xl my-4">Book Flight</h2>
+
+<div class="px-8 py-12 bg-zinc-50 drop-shadow-lg">
+  <div>
+    From:
+    <%= @flight.departure_airport.name_with_code %>
+  </div>
+  <div>
+    To:
+    <%= @flight.arrival_airport.name_with_code %>
+  </div>
+  <div>
+    <%= @flight.date %>
+  </div>
+  <div>
+    <%= @flight.formatted_time %>
+  </div>
+</div>
+
+<h2 class="font-semibold text-xl my-4">Passengers</h2>
+
+<%= form_with model: @booking do |booking_form| %>
+  <%= booking_form.fields_for :passengers do |passenger_form| %>
+    <div class="px-8 py-8 my-6 bg-zinc-50 drop-shadow">
+      <div class="italic text-xs">
+        Enter passenger info
+      </div>
+      <div class="mt-4">
+        <%= passenger_form.label :name %>
+        <%= passenger_form.text_field :name %>
+      </div>
+      <div class="mt-2">
+        <%= passenger_form.label :email %>
+        <%= passenger_form.text_field :email %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= booking_form.submit "Book Flight", class: "btn-primary" %>
+<% end %>
