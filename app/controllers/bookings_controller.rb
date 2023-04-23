@@ -9,5 +9,20 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = Booking.create(booking_params)
+
+    if @booking.errors.any?
+      @flight = Flight.find(booking_params[:flight_id])
+      render :new, status: :unprocessable_entity
+    else
+      flash[:success] = "Booked successfully"
+      redirect_to flights_path
+    end
+  end
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:flight_id, passengers_attributes: [:name, :email] )
   end
 end
