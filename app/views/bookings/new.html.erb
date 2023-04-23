@@ -1,3 +1,9 @@
+<% if @booking.errors.any? %>
+  <div class="px-2 py-2 bg-red-500 text-white font-semibold rounded">
+    <%= @booking.errors.first.full_message %>
+  </div>
+<% end %>
+
 <h2 class="font-semibold text-xl my-4">Book Flight</h2>
 
 <div class="div-container">
@@ -21,6 +27,7 @@
 
 <%= form_with model: @booking do |booking_form| %>
   <%= booking_form.fields_for :passengers do |passenger_form| %>
+    <%= booking_form.hidden_field :flight_id, value: @flight.id %>
     <div class="div-container my-6">
       <div class="italic text-xs">
         Enter passenger info

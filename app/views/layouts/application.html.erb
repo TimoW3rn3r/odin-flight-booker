@@ -12,6 +12,11 @@
   </head>
 
   <body class="bg-zinc-900 text-gray-300">
+    <% flash.each do |name, msg| %>
+      <div class="<%= name %>">
+        <%= msg %>
+      </div>
+    <% end %>
     <main class="container mx-auto my-28 px-5 flex-col space-y-8 md:max-w-xl">
       <%= yield %>
     </main>

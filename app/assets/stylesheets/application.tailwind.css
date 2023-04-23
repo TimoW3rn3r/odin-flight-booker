@@ -13,7 +13,6 @@
 }
 
 @layer components {
-
   .div-container {
     @apply px-8 py-8 bg-slate-800 drop-shadow-lg;
   }
@@ -24,5 +23,9 @@
 
   .search-result {
     @apply my-1 px-2 py-6 rounded-md text-neutral-400 drop-shadow hover:bg-slate-700;
+  }
+
+  .success {
+    @apply bg-green-100;
   }
 }
