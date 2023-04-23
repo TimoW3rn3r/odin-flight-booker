@@ -1,7 +1,7 @@
 <div>
   <h2 class="font-semibold text-xl my-4">Search Flight</h2>
 
-  <%= form_with method: :get, class: "flex-col space-y-4" do |f| %>
+  <%= form_with method: :get, class: "flex-col space-y-4 div-container" do |f| %>
     <div>
       <%= f.label :departure_airport_id, "Departure Airport" %><br>
       <%= f.collection_select :departure_airport_id,
@@ -40,21 +40,21 @@
 <div>
   <h2 class="font-semibold text-xl my-4">Search Results</h2>
 
-  <%= form_with url: new_booking_path, method: :get do |f| %>
+  <%= form_with url: new_booking_path, method: :get, class: "div-container" do |f| %>
 
     <ul>
       <% @flight_results.each do |flight| %>
         <%= f.hidden_field :num_tickets, value: params[:num_tickets] %>
 
-        <label for=<%= "flight_id_" + flight.id.to_s %> class="flex">
-          <%= f.radio_button :flight_id, flight.id, class: "self-start mt-1.5 mx-4" %>
-          <div>
+        <div class="flex search-result">
+          <%= f.radio_button :flight_id, flight.id, class: "self-start mt-1.5 mx-4 peer" %>
+          <label for=<%= "flight_id_" + flight.id.to_s %> class="peer-checked:font-semibold peer-checked:text-blue-200">
             <div><%= flight.departure_airport.airport_name %></div>
             <div><%= flight.arrival_airport.airport_name %></div>
             <div><%= flight.date %></div>
             <div><%= flight.time %></div>
-          </div>
-        </label>
+          </label>
+        </div>
 
         <br>
       <% end %>

@@ -2,8 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  select {
+    @apply bg-slate-300 w-full rounded-lg text-blue-800;
+  }
+
+  option {
+    @apply bg-red-200 text-slate-700;
+  }
+}
+
 @layer components {
+
+  .div-container {
+    @apply px-8 py-8 bg-slate-800 drop-shadow-lg;
+  }
+
   .btn-primary {
-    @apply py-2 px-4 bg-indigo-600 text-white text-sm font-semibold rounded-lg shadow hover:ring hover:bg-indigo-700 cursor-pointer;
+    @apply py-2 px-4 bg-indigo-600 text-white text-sm font-semibold rounded-lg shadow hover:ring hover:bg-indigo-700 cursor-pointer w-full;
+  }
+
+  .search-result {
+    @apply my-1 px-2 py-6 rounded-md text-neutral-400 drop-shadow hover:bg-slate-700;
   }
 }

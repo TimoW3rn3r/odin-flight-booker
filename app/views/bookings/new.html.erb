@@ -1,6 +1,6 @@
 <h2 class="font-semibold text-xl my-4">Book Flight</h2>
 
-<div class="px-8 py-12 bg-zinc-50 drop-shadow-lg">
+<div class="div-container">
   <div>
     From:
     <%= @flight.departure_airport.name_with_code %>
@@ -21,17 +21,17 @@
 
 <%= form_with model: @booking do |booking_form| %>
   <%= booking_form.fields_for :passengers do |passenger_form| %>
-    <div class="px-8 py-8 my-6 bg-zinc-50 drop-shadow">
+    <div class="div-container my-6">
       <div class="italic text-xs">
         Enter passenger info
       </div>
       <div class="mt-4">
-        <%= passenger_form.label :name %>
-        <%= passenger_form.text_field :name %>
+        <%= passenger_form.label :name %><br>
+        <%= passenger_form.text_field :name, class: "bg-slate-300 w-full rounded-lg text-gray-800" %>
       </div>
       <div class="mt-2">
-        <%= passenger_form.label :email %>
-        <%= passenger_form.text_field :email %>
+        <%= passenger_form.label :email %><br>
+        <%= passenger_form.email_field :email, class: "bg-slate-300 w-full rounded-lg text-gray-800" %>
       </div>
     </div>
   <% end %>
