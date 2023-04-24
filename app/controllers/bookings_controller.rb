@@ -16,8 +16,13 @@ class BookingsController < ApplicationController
       render :new, status: :unprocessable_entity
     else
       flash[:success] = "Booked successfully"
-      redirect_to flights_path
+      redirect_to @booking
     end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+    @flight = @booking.flight
   end
 
   private
