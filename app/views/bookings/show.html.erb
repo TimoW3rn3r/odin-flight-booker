@@ -1,6 +1,17 @@
-My booking
+<h2>Booking Information</h2>
+<%= render "booking" %>
 
-<%= @booking %>
+<h2>Passengers</h2>
 
-
-
+<div class="div-container">
+  <div>
+    <%= pluralize(@booking.passengers.count, "passenger") %>
+    booked for the flight
+  </div>
+  <% @booking.passengers.each do |passenger| %>
+    <div class="my-4">
+      <%= passenger.name %><br>
+      <%= passenger.email %>
+    </div>
+  <% end %>
+</div>
