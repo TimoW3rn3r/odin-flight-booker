@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   resources :flights, only: [:index]
-  resources :bookings, only: [:new, :create]
+  resources :bookings, only: [:new, :create, :show]
   root "flights#index"
 end
