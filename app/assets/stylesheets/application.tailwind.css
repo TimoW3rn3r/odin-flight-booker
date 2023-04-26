@@ -3,12 +3,15 @@
 @tailwind utilities;
 
 @layer base {
+  h2 {
+    @apply font-semibold text-xl my-4;
+  }
   select {
     @apply bg-slate-300 w-full rounded-lg text-blue-800;
   }
 
   option {
-    @apply bg-red-200 text-slate-700;
+    @apply bg-slate-700 text-slate-300;
   }
 }
 
@@ -22,7 +25,7 @@
   }
 
   .search-result {
-    @apply my-1 px-2 py-6 rounded-md text-neutral-400 drop-shadow hover:bg-slate-700;
+    @apply my-1 px-2 py-6 rounded-md border border-slate-500 text-neutral-400 drop-shadow hover:bg-slate-700;
   }
 
   .success {
