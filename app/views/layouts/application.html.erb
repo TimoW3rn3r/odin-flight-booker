@@ -17,6 +17,13 @@
         <%= msg %>
       </div>
     <% end %>
+
+    <nav class="flex justify-items-center font-extrabold text-md">
+      <div>
+        <%= link_to "Home", root_path %>
+      </div>
+    </nav>
+
     <main class="container mx-auto my-28 px-5 flex-col space-y-8 md:max-w-xl">
       <%= yield %>
     </main>
