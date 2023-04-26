@@ -8,9 +8,15 @@
     <%= @flight.arrival_airport.name_with_code %>
   </div>
   <div>
+    Date:
     <%= @flight.date %>
   </div>
   <div>
+    Time:
     <%= @flight.formatted_time %>
+  </div>
+  <div>
+    Duration:
+    <%= @flight.formatted_duration %>
   </div>
 </div>

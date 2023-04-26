@@ -15,4 +15,8 @@ class Flight < ApplicationRecord
   def formatted_time
     time.strftime("%l:%M %p")
   end
+
+  def formatted_duration
+    "#{duration / 60}h #{duration % 60}min"
+  end
 end
