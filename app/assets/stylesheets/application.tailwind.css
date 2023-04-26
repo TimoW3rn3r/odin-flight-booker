@@ -16,6 +16,10 @@
 }
 
 @layer components {
+  h2 {
+    @apply font-semibold text-xl my-4;
+  }
+
   .div-container {
     @apply px-8 py-8 bg-slate-800 drop-shadow-lg;
   }
@@ -29,6 +33,6 @@
   }
 
   .success {
-    @apply bg-green-100;
+    @apply px-2 py-1 my-1 bg-green-700 font-semibold text-sm;
   }
 }

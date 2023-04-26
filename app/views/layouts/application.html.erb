@@ -13,12 +13,13 @@
 
   <body class="bg-zinc-900 text-gray-300">
     <% flash.each do |name, msg| %>
-      <div class="<%= name %>">
+      <!-- https://tailwindcss.com/docs/content-configuration#dynamic-class-names -->
+      <div class=<%= { "success" => "success", "notice" => "notice", "alert" => "alert" }[name] %> >
         <%= msg %>
       </div>
     <% end %>
 
-    <nav class="flex justify-items-center font-extrabold text-md">
+    <nav class="py-4 flex justify-center font-extrabold text-md bg-blue-700">
       <div>
         <%= link_to "Home", root_path %>
       </div>

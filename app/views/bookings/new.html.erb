@@ -4,13 +4,13 @@
   </div>
 <% end %>
 
-<h2 class="font-semibold text-xl my-4">Book Flight</h2>
+<h2>Book Flight</h2>
 
 <div class="div-container">
   <%= render "flight" %>
 </div>
 
-<h2 class="font-semibold text-xl my-4">Passengers</h2>
+<h2>Passengers</h2>
 
 <%= form_with model: @booking do |booking_form| %>
   <%= booking_form.fields_for :passengers do |passenger_form| %>
