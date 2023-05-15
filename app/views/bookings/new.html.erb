@@ -13,22 +13,33 @@
 <h2>Passengers</h2>
 
 <%= form_with model: @booking do |booking_form| %>
-  <%= booking_form.fields_for :passengers do |passenger_form| %>
-    <%= booking_form.hidden_field :flight_id, value: @flight.id %>
-    <div class="div-container my-6">
-      <div class="italic text-xs">
-        Enter passenger info
-      </div>
-      <div class="mt-4">
-        <%= passenger_form.label :name %><br>
-        <%= passenger_form.text_field :name, class: "bg-slate-300 w-full rounded-lg text-gray-800" %>
-      </div>
-      <div class="mt-2">
-        <%= passenger_form.label :email %><br>
-        <%= passenger_form.email_field :email, class: "bg-slate-300 w-full rounded-lg text-gray-800 invalid:border-red-500" %>
-      </div>
+  <%= booking_form.hidden_field :flight_id, value: @flight.id %>
+
+  <div data-controller="passenger">
+
+    <div data-passenger-target="container">
+      <%= booking_form.fields_for :passengers do |passenger_form| %>
+        <div class="div-container my-6" data-passenger-target="individual">
+          <div class="italic text-xs">
+            Enter passenger info
+          </div>
+          <div class="mt-4">
+            <%= passenger_form.label :name, "data-passenger-target" => "label" %><br>
+            <%= passenger_form.text_field :name, "data-passenger-target" => "textField", class: "bg-slate-300 w-full rounded-lg text-gray-800" %>
+          </div>
+          <div class="mt-2">
+            <%= passenger_form.label :email, "data-passenger-target" => "label" %><br>
+            <%= passenger_form.email_field :email, "data-passenger-target" => "textField", class: "bg-slate-300 w-full rounded-lg text-gray-800 invalid:border-red-500" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+
+    <div class="flex justify-center gap-4 mb-8">
+      <div class="py-2 px-4 bg-green-900 text-white text-sm font-semibold rounded-lg shadow cursor-pointer hover:bg-green-700" data-action="click->passenger#addPassenger">Add New</div>
+      <div class="py-2 px-4 bg-red-900 text-white text-sm font-semibold rounded-lg shadow cursor-pointer hover:bg-red-700" data-action="click->passenger#removePassenger">Remove One</div>
+    </div>
+  </div>
 
   <%= booking_form.submit "Book Flight", class: "btn-primary" %>
 <% end %>
