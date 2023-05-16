@@ -75,3 +75,5 @@ group :test do
 end
 
 gem "pry-byebug"
+
+gem "pg", "~> 1.5"
