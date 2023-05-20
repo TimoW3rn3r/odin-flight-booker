@@ -10,11 +10,15 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.create(booking_params)
+    @flight = Flight.find(booking_params[:flight_id])
 
     if @booking.errors.any?
-      @flight = Flight.find(booking_params[:flight_id])
       render :new, status: :unprocessable_entity
     else
+      @booking.passengers.each do |passenger|
+        PassengerMailer.with(passenger: passenger, flight: @flight).ticket_email.deliver_later
+      end
+
       flash[:success] = "Booked successfully"
       redirect_to @booking
     end
