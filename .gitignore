@@ -42,3 +42,6 @@ fly.toml
 .dockerignore
 Dockerfile
 lib/tasks/fly.rake
+
+# Ignore application configuration
+/config/application.yml
