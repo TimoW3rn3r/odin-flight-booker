@@ -77,3 +77,5 @@ end
 gem "pry-byebug"
 
 gem "pg", "~> 1.5"
+
+gem "letter_opener", "~> 1.8", group: :development
