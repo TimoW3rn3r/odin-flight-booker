@@ -1,5 +1,5 @@
 class PassengerMailer < ApplicationMailer
-  default from: "noreply@flight-booker-odin.fly.dev"
+  default from: "flight-booker@ultrapw.cf"
   layout 'mailer'
 
   def ticket_email
