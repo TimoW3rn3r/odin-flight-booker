@@ -1,0 +1,33 @@
+<h1>Flight Booked</h1>
+
+<p>
+Dear <span style="font-weight: 600"><%= @passenger.name %></span>,
+</p>
+
+<p>
+You flight has been booked successfully. Please verify your flight details below:
+</p>
+
+<p>
+  <div>
+    From:
+    <%= @flight.departure_airport.name_with_code %>
+  </div>
+  <div>
+    To:
+    <%= @flight.arrival_airport.name_with_code %>
+  </div>
+  <div>
+    Date:
+    <%= @flight.date %>
+  </div>
+  <div>
+    Time:
+    <%= @flight.formatted_time %>
+  </div>
+</p>
+
+<p>
+Thanks,
+Your friends at OdinFlightBooker
+</p>

@@ -1,0 +1,19 @@
+--------------------------------------------------
+Flight Booked
+--------------------------------------------------
+
+Dear <%= @passenger.name %>,
+
+You flight has been booked successfully. Please verify your flight details below:
+
+From:
+<%= @flight.departure_airport.name_with_code %>
+To:
+<%= @flight.arrival_airport.name_with_code %>
+Date:
+<%= @flight.date %>
+Time:
+<%= @flight.formatted_time %>
+
+Thanks,
+Your friends at OdinFlightBooker
